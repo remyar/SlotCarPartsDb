@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/remyar/SlotCarPartsDb/issues"
   },
-  "homepage": "https://github.com/remyar/SlotCarPartsDb#readme"
+  "homepage": "https://github.com/remyar/SlotCarPartsDb#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express4-routes-loader": "0.0.3",
+    "handlebars-helpers": "^0.10.0"
+  }
 }
