@@ -1,29 +1,58 @@
 {{> html_public_header }}
 
-
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4">
-                {{> card title="A la une"}}
-            </div>
-            <div class="col-md-4">
-                {{> card title="Vous avez aimé"}}
-            </div>
-            <div class="col-md-4">
-                {{> card title="Prochainement"}}
-            </div>
+            {{#each categories}}
+                <div class="col-md-2">
+                    <button onClick="navigationGoTo('/categorie/{{this.name}}.html');" width="100%" type="button" class="btn btn-outline-info  btn-rounded waves-effect btn-block">{{this.name}}</button>
+                </div>
+            {{/each}}
         </div>
-        <br >
-        <br>
-        <div class="row">
-            <div class="col-md-9">
-       
-            </div>
-            <div class="col-md-3">
-                {{> card }}
-            </div>
-        </div>
+
+        {{#if parts}}
+            <br>
+            {{#if filters}}
+                <div class="row">
+                    {{#each filters}}
+                        <div class="col-md-3">
+                            {{@key}} :
+                            <select class="custom-select" multiple id="{{@key}}" onChange="filterChange('{{@key}}');">
+                                <option selected value="">Pas de filtre</option>
+                                {{#each this}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+            <br>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Designation</th>
+                        {{#each filters}}
+                            <th scope="col">{{@key}}</th>
+                        {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each parts}}
+                        <tr>
+                            <th>{{this.product_reference}}</th>
+                            <td>{{this.title}}</td>
+                            {{#each ../filters}}
+                                <td>{{lookup ../this @key}}</td>
+                            {{/each}}
+                        </tr>
+                    {{/each}}
+                </tbody>
+ 
+            </table>
+
+        {{/if}}
     </div> 
 
 {{> html_public_footer}}

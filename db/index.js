@@ -1,7 +1,22 @@
-var sq = require('sqlite3');
-var path = require('path');
+const db = require('./parts.json');
 
-sq.verbose(); // pour obtenir des informations sur l'exécution des
-              // requêtes SQL (utile pour le débug)
+module.exports.getCategories = () => {
+    let categories = [];
 
-var db = new sq.Database(path.resolve(__dirname , './database.db3'));
+    for ( let key in db ){
+        categories.push({ name : key , count : db[key].length});
+    }
+
+    return categories;
+}
+
+module.exports.getCategorie = ( cat ) => {
+
+    let parts = db[cat];
+
+    if ( parts == undefined){
+        parts = [];
+    }
+    
+    return parts;
+}

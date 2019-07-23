@@ -21,7 +21,6 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express4-routes-loader": "0.0.3",
-    "handlebars-helpers": "^0.10.0",
-    "sqlite3": "^4.0.9"
+    "handlebars-helpers": "^0.10.0"
   }
 }
