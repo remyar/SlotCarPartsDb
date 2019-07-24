@@ -7,3 +7,7 @@ module.exports.get = (req, res, next , render) => {     //--> Create http GET Me
 
     render(objRet);
 }
+
+module.exports.post = (req, res, next , render) => { //--> Create http POST Method
+
+}

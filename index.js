@@ -6,14 +6,17 @@ var handlebars = require("express-handlebars");
 var expressRoute = require('express4-routes-loader');
 var helpers = require('handlebars-helpers')();
 var routes = require('./routes/core.routes.js');
- 
+var bodyParser = require('body-parser');
+
 var app = express();
  
 var path = require('path');
 
 app.use(express.static(__dirname + '/themes/' + process.env.WEB_THEME + '/static'));
 app.use(express.static(__dirname + '/uploads'));
- 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
 // view engine setup
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname , '/themes/' + process.env.WEB_THEME));

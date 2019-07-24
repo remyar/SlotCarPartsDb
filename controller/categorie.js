@@ -6,27 +6,10 @@ module.exports.get = (req, res, next , render) => {     //--> Create http GET Me
     objRet.categories = db.getCategories();
 
 
-    let allParts = db.getCategorie(req.params.categorie);
+    objRet.parts = db.getCategorie(req.params.categorie);
 
-    let queryLength = 0;
-    for ( let key in req.query){
-        queryLength++;
-    }
-    if ( queryLength == 0 ){
-        objRet.parts = allParts;
-    } else{
-        objRet.parts = [];
 
-        if ( req.query.filters != undefined){
-            let filters = JSON.parse(req.query.filters);
-            allParts.map((part) => {
-                objRet.parts.push(part);
-            });
-        }
-
-    }
-    
-
+    //-- listing des filtres
     objRet.filters = {};
 
     objRet.parts.map((part) => {
@@ -51,4 +34,71 @@ module.exports.get = (req, res, next , render) => {     //--> Create http GET Me
     })
 
     render(objRet);
+}
+
+
+
+module.exports.post = (req, res, next , render) => { //--> Create http POST Method
+
+    let objRet = {};
+    let parts = db.getCategorie(req.params.categorie);
+
+    let filters = {};
+    
+    if ( req.body.filters != undefined ){
+        filters = JSON.parse(req.body.filters);
+    }
+
+    objRet.parts = [];
+
+    //-- netoyage des filtres
+    for ( let key in filters ){
+        let isEmpty = true;
+        filters[key].map((k)=>{
+            if ( k != "" ){
+                isEmpty = false;
+            }
+        });
+        if ( isEmpty == true ){
+            delete filters[key];
+        }
+    }
+
+    let filterredParts = {};
+    for ( let key in filters ){
+        filters[key].map((k) => {
+            parts.map((p) => {
+                if ( p[key] == k ){
+                    if ( filterredParts[p.product_reference] == undefined) {
+                        filterredParts[p.product_reference] = p;
+                    }
+                }
+            })
+        });
+    }
+
+    for ( let key in filterredParts ){
+        objRet.parts.push(filterredParts[key]);
+    }
+ 
+
+    /*
+    parts.map((p , idx)=>{
+        for ( let key in filters ){
+            if ( p[key] != undefined ){
+                if ( filters[key].length == 0){
+                    objRet.parts.push(p);
+                } else {
+                    filters[key].map((k)=> {
+                        if ( k == "" || k == p[key] ){
+                            objRet.parts.push(p);
+                        }
+                    });
+                }
+
+            }
+        }
+    });
+*/
+    res.((send(JSON.stringify(objRet));
 }
