@@ -1,4 +1,5 @@
 var filtersTab = {};
+
 $(function() {
     filtersTab = {};    
 

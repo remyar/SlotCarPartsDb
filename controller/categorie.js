@@ -41,15 +41,13 @@ module.exports.get = (req, res, next , render) => {     //--> Create http GET Me
 module.exports.post = (req, res, next , render) => { //--> Create http POST Method
 
     let objRet = {};
-    let parts = db.getCategorie(req.params.categorie);
+    objRet.parts = db.getCategorie(req.params.categorie);
 
     let filters = {};
     
     if ( req.body.filters != undefined ){
         filters = JSON.parse(req.body.filters);
     }
-
-    objRet.parts = [];
 
     //-- netoyage des filtres
     for ( let key in filters ){
@@ -64,41 +62,26 @@ module.exports.post = (req, res, next , render) => { //--> Create http POST Meth
         }
     }
 
-    let filterredParts = {};
-    for ( let key in filters ){
-        filters[key].map((k) => {
-            parts.map((p) => {
+    function _filterParts(_tabParts , key ){
+        let returnParts = [];
+        _tabParts.map((p) => {
+            let validParts = false;
+            filters[key].map((k) => {
                 if ( p[key] == k ){
-                    if ( filterredParts[p.product_reference] == undefined) {
-                        filterredParts[p.product_reference] = p;
-                    }
+                    validParts = true;
                 }
-            })
-        });
-    }
-
-    for ( let key in filterredParts ){
-        objRet.parts.push(filterredParts[key]);
-    }
- 
-
-    /*
-    parts.map((p , idx)=>{
-        for ( let key in filters ){
-            if ( p[key] != undefined ){
-                if ( filters[key].length == 0){
-                    objRet.parts.push(p);
-                } else {
-                    filters[key].map((k)=> {
-                        if ( k == "" || k == p[key] ){
-                            objRet.parts.push(p);
-                        }
-                    });
-                }
-
+            });
+            if ( validParts == true ){
+                returnParts.push(p);
             }
-        }
-    });
-*/
-    res.((send(JSON.stringify(objRet));
+        });
+        return returnParts;
+    }
+
+    for ( let key in filters ){
+        objRet.parts = _filterParts(objRet.parts , key);
+    }
+
+
+    res.send(JSON.stringify(objRet));
 }
