@@ -1,0 +1,44 @@
+{
+    "list" : {
+        "nsr" : {
+            "couronnes" : [
+                { "url" : "https://www.slotcar-union.com/fr/342-couronnes-sidewinder" },
+                { "url" : "https://www.slotcar-union.com/fr/343-couronnes-anglewinder" },
+                { "url" : "https://www.slotcar-union.com/fr/344-couronnes-inline" }
+            ] ,
+            "moteurs" : [
+                { "url" : "https://www.slotcar-union.com/fr/354-moteurs-cables" }
+            ] ,
+            "pignons" : [
+                { "url" : "https://www.slotcar-union.com/fr/345-pignons" }
+            ],
+            "chassis" : [
+                { "url" : "https://www.slotcar-union.com/fr/356-chassis" }
+            ]
+        },
+        "slot.it" :{
+            "couronnes" : [
+                { "url" : "https://www.slotcar-union.com/fr/85-couronnes-sidewinder" },
+                { "url" : "https://www.slotcar-union.com/fr/86-couronnes-anglewinder" },
+                { "url" : "https://www.slotcar-union.com/fr/84-couronnes-inline" }
+            ],
+            "pignons" : [
+                { "url" : "https://www.slotcar-union.com/fr/82-pignons" }
+            ]
+        },
+        "scaleauto" :{
+            "couronnes" : [
+                { "url" : "https://www.slotcar-union.com/fr/513-couronnes-sidewinder" },
+                { "url" : "https://www.slotcar-union.com/fr/511-couronnes-anglewinder" }
+            ],
+            "moteurs" : [
+                { "url" : "https://www.slotcar-union.com/fr/514-moteurs-cables" }
+            ],
+            "pignons" : [
+                { "url" : "https://www.slotcar-union.com/fr/509-pignons" }
+            ]
+        }
+    }
+}
+
+
