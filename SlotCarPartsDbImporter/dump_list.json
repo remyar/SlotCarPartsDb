@@ -6,7 +6,7 @@
                 { "url" : "https://www.slotcar-union.com/fr/343-couronnes-anglewinder" },
                 { "url" : "https://www.slotcar-union.com/fr/344-couronnes-inline" }
             ] ,
-            "moteurs" : [
+            "moteurs_cables" : [
                 { "url" : "https://www.slotcar-union.com/fr/354-moteurs-cables" }
             ] ,
             "pignons" : [
@@ -14,7 +14,33 @@
             ],
             "chassis" : [
                 { "url" : "https://www.slotcar-union.com/fr/356-chassis" }
-            ]
+            ],
+			"pneus" : [
+                { "url" : "https://www.slotcar-union.com/fr/363-pneus" }
+            ],
+			"roues" : [
+                { "url" : "https://www.slotcar-union.com/fr/368-roues" },
+				{ "url" : "https://www.slotcar-union.com/fr/366-enjoliveurs-de-roue" }
+            ],
+			"supports_moteur" : [
+                { "url" : "https://www.slotcar-union.com/fr/360-supports-moteur" }
+            ],
+			"visserie" : [
+                { "url" : "https://www.slotcar-union.com/fr/355-visserie" }
+            ],
+			"palliers_roulements" : [
+                { "url" : "https://www.slotcar-union.com/fr/365-paliers-roulements" }
+            ],
+			"guides_tresses":[
+				{ "url" : "https://www.slotcar-union.com/fr/357-guides-tresses"}
+			],
+			"essieux":[
+				{ "url" : "https://www.slotcar-union.com/fr/364-essieux"}
+			],
+			"aimants_lest":[
+				{ "url" : "https://www.slotcar-union.com/fr/367-aimants-lest"}
+			]
+			
         },
         "slot.it" :{
             "couronnes" : [

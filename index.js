@@ -12,15 +12,17 @@ var app = express();
  
 var path = require('path');
 
+
 app.use(express.static(__dirname + '/themes/' + process.env.WEB_THEME + '/static'));
 app.use(express.static(__dirname + '/uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // view engine setup
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname , '/themes/' + process.env.WEB_THEME));
   
+helpers.i18n = require('./helpers/i18n');
 app.engine('hbs', handlebars({ extname: '.hbs' , partialsDir: './themes/' + process.env.WEB_THEME , helpers: helpers}));
  
  
@@ -36,6 +38,16 @@ app.use(function (req, res, next) {
         req.objRet.debug = true;
     }
  
+    req.objRet.i18n = {
+        language : 'fr',
+        en : {
+            key: 'value'
+        },
+        fr : {
+            key: 'valeur'
+        }
+    };
+
     next();
 });
 

@@ -4,19 +4,18 @@
 
         <div class="row">
             {{#each categories}}
-                <div class="col-md-2">
+                <div class="col-md-2 paddingTop15">
                     <button onClick="navigationGoTo('/categorie/{{this.name}}.html');" width="100%" type="button" class="btn btn-outline-info  btn-rounded waves-effect btn-block">{{this.name}}</button>
                 </div>
             {{/each}}
         </div>
-
+        <br>
         {{#if parts}}
-            <br>
             {{#if filters}}
                 <div class="row">
                     {{#each filters}}
-                        <div class="col-md-3">
-                            {{@key}} :
+                        <div class="col-md-3 paddingTop15">
+                            {{i18n @key}} :
                             <select class="custom-select" multiple id="{{@key}}" onChange="filterChange('{{@key}}');">
                                 <option selected value="">Pas de filtre</option>
                                 {{#each this}}
