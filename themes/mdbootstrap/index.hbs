@@ -5,7 +5,7 @@
         <div class="row">
             {{#each categories}}
                 <div class="col-md-2 paddingTop15">
-                    <button onClick="navigationGoTo('/categorie/{{this.name}}.html');" width="100%" type="button" class="btn btn-outline-info  btn-rounded waves-effect btn-block">{{this.name}}</button>
+                    <button onClick="navigationGoTo('/categorie/{{this.name}}.html');" width="100%" type="button" class="btn btn-outline-info  btn-rounded waves-effect btn-block">{{i18n this.name}}</button>
                 </div>
             {{/each}}
         </div>
@@ -17,7 +17,7 @@
                         <div class="col-md-3 paddingTop15">
                             {{i18n @key}} :
                             <select class="custom-select" multiple id="{{@key}}" onChange="filterChange('{{@key}}');">
-                                <option selected value="">Pas de filtre</option>
+                                <option selected value="">{{i18n "pas de filtre"}}</option>
                                 {{#each this}}
                                     <option value="{{this}}">{{this}}</option>
                                 {{/each}}
@@ -30,10 +30,10 @@
             <table class="table table-hover">
                 <thead>
                     <tr id="partsTabHeader">
-                        <th scope="col">#</th>
-                        <th scope="col">Designation</th>
+                        <th scope="col" id="#">#</th>
+                        <th scope="col" id="designation">{{i18n "designation"}}</th>
                         {{#each filters}}
-                            <th scope="col">{{@key}}</th>
+                            <th scope="col" id="{{@key}}">{{i18n @key}}</th>
                         {{/each}}
                     </tr>
                 </thead>

@@ -23,8 +23,8 @@ function filterChange(filters){
         var obj = $.parseHTML($('#partsTabHeader').html());
         var keyOrder = [];
         obj.map((p) => {
-            if ( p.childNodes.length > 0 ){
-                keyOrder.push(p.childNodes[0].textContent);
+            if ( p.id && p.id.length > 0 ){
+                keyOrder.push(p.id);
             }
             
         })
@@ -38,7 +38,7 @@ function filterChange(filters){
                     html += "<th>";
                     html += p.product_reference.toString();
                     html += "</th>";
-                } else if ( k == "Designation" ){
+                } else if ( k == "designation" ){
                     html += "<td>";
                     html += p.title.toString();
                     html += "</td>";

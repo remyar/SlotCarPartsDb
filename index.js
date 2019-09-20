@@ -12,7 +12,6 @@ var app = express();
  
 var path = require('path');
 
-
 app.use(express.static(__dirname + '/themes/' + process.env.WEB_THEME + '/static'));
 app.use(express.static(__dirname + '/uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,16 +36,10 @@ app.use(function (req, res, next) {
     {
         req.objRet.debug = true;
     }
- 
-    req.objRet.i18n = {
-        language : 'fr',
-        en : {
-            key: 'value'
-        },
-        fr : {
-            key: 'valeur'
-        }
-    };
+
+    let acceptLanguage = req.headers['accept-language'] || "en";
+    acceptLanguage = acceptLanguage.split(';')[0].split('-')[0];
+    req.objRet.locale = acceptLanguage;
 
     next();
 });

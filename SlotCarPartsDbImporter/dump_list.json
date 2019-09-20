@@ -39,7 +39,10 @@
 			],
 			"aimants_lest":[
 				{ "url" : "https://www.slotcar-union.com/fr/367-aimants-lest"}
-			]
+            ],
+            "voitures" : [
+                { "url" : "https://www.slotcar-union.com/fr/319-voitures?id_category=319&n=160"}
+            ]
 			
         },
         "slot.it" :{
